@@ -10,6 +10,7 @@ namespace RepetitionInheritance
     {
         public BenzinBil(string Mærke, double prisExAfgift, int købsÅr, int kmPrLiter, string registreringsNr, int tank) : base(Mærke, prisExAfgift, købsÅr, registreringsNr, tank)
         {
+
         }
 
 
