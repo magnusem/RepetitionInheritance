@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace RepetitionInheritance
 {
-    public class Bil
+    public abstract class Bil
     {
         public int BilPrisExAfgift { get; private set; }
         public int KøbsÅr { get; private set; }
         public string Mærke { get; private set; }
         public string RegistreringsNr { get; set; }
         public int KmPrLiter { get; private set; }
+        public int Tank { get; set; }
 
         public virtual double RegistreringsAfgift()
         {
@@ -20,7 +21,7 @@ namespace RepetitionInheritance
 
             if (KøbsÅr <= 2014)
             {
-                if (BilPrisExAfgift >= 80500)
+                if (BilPrisExAfgift <= 80500)
                 {
                     regAfgift = BilPrisExAfgift * 105 / 100;
                 }
@@ -50,19 +51,26 @@ namespace RepetitionInheritance
             return BilPrisExAfgift + RegistreringsAfgift();
         }
 
-        public virtual int HalvÅrligEjerAfgift()
+        public abstract int HalvÅrligEjerAfgift();
+
+
+        public virtual int RækkeVidde()
         {
-            return 1000;
+            return Tank * KmPrLiter;
         }
 
-        public Bil(string Mærke, double prisExAfgift, int købsÅr, int kmPrLiter, string registreringsNr)
+
+
+        public Bil(string Mærke, double prisExAfgift, int købsÅr, string registreringsNr, int tank)
         {
             this.Mærke = Mærke;
             this.BilPrisExAfgift = BilPrisExAfgift;
-            this.KøbsÅr = KøbsÅr;
-            this.KmPrLiter = KmPrLiter;
-            this.RegistreringsNr = RegistreringsNr;
+            this.KøbsÅr = købsÅr;
+            this.RegistreringsNr = registreringsNr;
             this.RegistreringsAfgift();
+            this.Tank = tank;
         }
+
+
     }
 }
