@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RepetitionInheritance
 {
-    class ElBil : Bil
+    public class ElBil : Bil
     {
         public int BatteriKapacitet { get; set; }
         public int KmPrKW { get; set; }
